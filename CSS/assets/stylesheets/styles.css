@@ -1,0 +1,36 @@
+h1 {
+  color: red;
+}
+
+.wombo {
+  color: chartreuse;
+  font-size: 4.2em;
+}
+
+#firsty {
+  color: blue;
+}
+
+#texty {
+  color: fuchsia;
+}
+
+h1:hover {
+  color: mediumpurple;
+}
+
+p .wombo {
+  font-size: 1em;
+  color: aqua;
+}
+
+p {
+  background-color: rebeccapurple;
+  border-style: double;
+  border-width: 2em;
+  border-radius: 3em;
+  padding: 0.5em;
+  width: fit-content;
+  font-size: 3em;
+  text-decoration: line-through brown wavy;
+}

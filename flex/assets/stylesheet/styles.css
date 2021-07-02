@@ -1,0 +1,23 @@
+body {
+  color: Red;
+}
+
+.demo {
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.vflex {
+  flex-grow: 1;
+}
