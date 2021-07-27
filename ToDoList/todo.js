@@ -16,9 +16,14 @@ function addItem(e, text) {
 }
 
 function removeItem(event) {
+  console.log("Removing item:");
+  console.log("Target is:");
+  console.log(event.target);
+  console.log("Current Target is:");
+  console.log(event.currentTarget);
   event.target.remove();
 }
 
-addItem(this, "Demo Item 1");
-addItem(this, "Demo Item 2");
-addItem(this, "Demo Item 3");
+addItem(this, "Walk the dog");
+addItem(this, "Buy groceries");
+addItem(this, "Read a book");

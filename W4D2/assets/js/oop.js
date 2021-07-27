@@ -68,16 +68,20 @@ console.log(dog);
 console.log("" + dog);
 
 class Vehicle {
-  milesDrivenSinceLast;
-  GallonsFilledSinceLast;
-  mpg;
+  // # means this field is private!
+  // private fields can only be accessed by THIS class!
+  #milesDrivenSinceLast = 1;
+  #gallonsFilledSinceLast = 1;
+  mpg = 0;
   fillTank(milesDriven, gallonsFilled) {
-    this.calculateMPG(milesDriven, gallonsFilled);
+    this.#milesDrivenSinceLast = milesDriven;
+    this.#gallonsFilledSinceLast = gallonsFilled;
   }
   calculateMPG = function (milesDriven, gallonsFilled) {
     this.mpg = milesDriven / gallonsFilled;
   };
   getMPG = function () {
+    this.calculateMPG(this.#milesDrivenSinceLast, this.#gallonsFilledSinceLast);
     return this.mpg;
   };
 }
@@ -87,11 +91,57 @@ myCar.fillTank(100, 10);
 console.log("My current MPG: " + myCar.getMPG());
 
 class Prius extends Vehicle {
-  calculateMPG = function (milesDriven, gallonsFilled) {
-    this.mpg = (milesDriven * 2) / gallonsFilled;
-  };
+  //   calculateMPG = function (milesDriven, gallonsFilled) {
+  //     this.#mpg = (milesDriven * 2) / gallonsFilled;
+  //   };
 }
 
 let myPrius = new Prius();
 myPrius.fillTank(100, 10);
+// myPrius.milesDrivenSinceLast = 10000;
+
+// myPrius.#mpg = 10000000;
+
 console.log("My prius's MPG: " + myPrius.getMPG());
+// console.log(mpg);
+
+const GRAVITY_CONSTANT = 1.3;
+
+// GRAVITY_CONSTANT = 1.1;
+class Book {
+  constructor(bookTitle) {
+    this.title = bookTitle;
+    this.pages = 0;
+  }
+
+  toString() {
+    return this.title + ", pages: " + this.pages;
+  }
+
+  getTitle() {
+    return this.title;
+  }
+  getFullDescription() {
+    return this.title + ", has " + this.pages + " pages.";
+  }
+}
+
+let myBook = new Book("The Story of Book");
+let myArray = new Array(1, 2, 3, 4);
+console.log(myBook);
+console.log("My book is called: " + myBook);
+console.log("My array: " + myArray);
+
+console.log("My book's title: " + myBook.getTitle());
+console.log("My book's full description: " + myBook.getFullDescription());
+
+// works because myFunc is hoisted - since it is declared
+myFunc();
+// does not work - newFunc is assigned instead of decalred,
+// so it is not hoisted!
+// newFunc();
+
+// function declaration
+function myFunc() {}
+// function assignment
+let newFunc = function () {};
